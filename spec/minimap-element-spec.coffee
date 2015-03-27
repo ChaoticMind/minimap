@@ -297,6 +297,14 @@ describe 'MinimapElement', ->
         it 'relays the events to the editor view', ->
           expect(editorElement.component.presenter.setScrollTop).toHaveBeenCalled()
 
+      fdescribe 'middle clicking the minimap', ->
+        beforeEach ->
+          canvas = minimapElement.canvas
+          mousedown(canvas, btn: 1)
+
+        it 'lets us know that middle click was pressed', ->
+          expect(atom.config.get('minimap.middleClicked')).toBeTruthy()
+
       describe 'pressing the mouse on the minimap canvas (without scroll animation)', ->
         beforeEach ->
           t = 0

@@ -444,6 +444,8 @@ class MinimapElement extends HTMLElement
   #
   # event - The {Event} object.
   mousePressedOverCanvas: ({which, pageY, target}) ->
+    if which is 2
+      atom.config.set 'minimap.middleClicked', true
     return if which isnt 1
 
     y = pageY - target.getBoundingClientRect().top
